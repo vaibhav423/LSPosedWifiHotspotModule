@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Set up JDK 11
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '11'
           distribution: 'temurin'
@@ -28,7 +28,7 @@ jobs:
           if [ ! -f "./gradlew" ]; then
             echo "Creating Gradle wrapper script"
             mkdir -p gradle/wrapper
-            wget -O ./gradlew https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.properties
+            wget -O ./gradlew https://raw.githubusercontent.com/gradle/gradle/master/gradlew
             chmod +x ./gradlew
           fi
       
@@ -38,6 +38,9 @@ jobs:
             echo "Downloading Gradle wrapper JAR"
             mkdir -p gradle/wrapper
             wget -O gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/raw/master/gradle/wrapper/gradle-wrapper.jar
+            wget -O gradle/wrapper/gradle-wrapper.properties https://github.com/gradle/gradle/raw/master/gradle/wrapper/gradle-wrapper.properties
+            # Update the distribution URL
+            sed -i 's|distributionUrl=.*|distributionUrl=https\\://services.gradle.org/distributions/gradle-7.6.1-bin.zip|g' gradle/wrapper/gradle-wrapper.properties
           fi
       
       - name: Create local.properties
