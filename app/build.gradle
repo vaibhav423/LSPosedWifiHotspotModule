@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace "com.example.wifihotspotmodule"
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.example.wifihotspotmodule"
