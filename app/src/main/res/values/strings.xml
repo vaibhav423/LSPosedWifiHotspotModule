@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WiFi Hotspot Module</string>
+    <string name="apply_changes">Apply Changes</string>
+    <string name="ssid_hint">New SSID</string>
+    <string name="password_hint">New Password (min 8 chars)</string>
+    <string name="success_message">Changes applied successfully!</string>
+    <string name="error_message">Failed to apply changes. Check logs.</string>
+    <string name="password_too_short">Password must be at least 8 characters</string>
+</resources>
